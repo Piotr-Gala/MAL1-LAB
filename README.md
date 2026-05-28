@@ -30,14 +30,14 @@ MAL1-LAB/
 
 ## Assignments
 
-| Assignment | Topic |
-| --- | --- |
-| Assignment 1 | Car prices |
-| Assignment 2 | Candidate Test 2022, part 1 |
-| Assignment 3 | Mushroom foraging |
-| Assignment 4 | Detecting exoplanets |
-| Assignment 5 | Neural networks and sentiment analysis |
-| Assignment 6 | Candidate Test 2022, part 2 |
+| Assignment | Topic | Main focus |
+| --- | --- | --- |
+| Assignment 1 | Car prices | Linear algebra for regression, OLS, Ridge, Lasso, Elastic Net, model metrics, and kNN classification of cheap vs. expensive cars. |
+| Assignment 2 | Candidate Test 2022, part 1 | Political response analysis, candidate confidence, inter-party and intra-party disagreement, and tree-based classification of party affiliation. |
+| Assignment 3 | Mushroom foraging | Binary classification of edible vs. poisonous mushrooms using preprocessing pipelines, logistic regression, validation strategies, confusion matrices, and classification metrics. |
+| Assignment 4 | Detecting exoplanets | Data preprocessing, feature engineering, missing values, outlier and correlation analysis, train/validation/test splitting, Logistic Regression, SVM, and classification metrics. |
+| Assignment 5 | Neural networks and sentiment analysis | IMDb sentiment classification using Bag-of-Words features, train/validation/test splits, a one-hidden-layer neural network, hyperparameter tuning, and test-set evaluation. |
+| Assignment 6 | Candidate Test 2022, part 2 | Political landscape analysis using PCA, interpretation of important questions, party position plots, K-Means, Hierarchical clustering, DBSCAN, and disagreement analysis among elected candidates. |
 
 ## How to Run
 
