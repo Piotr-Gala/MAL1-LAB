@@ -10,11 +10,12 @@ I started with exploratory data analysis: I checked the dataset shape, column ty
 Then I cleaned the data by removing completely empty columns and identifier columns, encoded the target labels, and prepared the feature matrix.
 
 For modelling, I split the data into training, validation and test sets using stratification.
-After the split, I applied median imputation and standard scaling, fitting both steps only on the training data to avoid data leakage.
+Before modelling, I removed target-related columns and the explicit false-positive flag columns from the feature matrix.
+This made the experiment more conservative, because the model could not rely on variables that are very close to the target labelling process.
 
+After the split, I applied median imputation and standard scaling, fitting both steps only on the training data to avoid data leakage.
 Finally, I trained and compared Logistic Regression and SVM models.
-Logistic Regression performed slightly better on the final test set, with about 90% accuracy and F1-score.
-I also treated the result carefully, because some false-positive flag features may act as proxy information for the target label.
+SVM performed better on the final test set, with about 85.5% accuracy and F1-score.
 ```
 
 ## Cells 1-3: Title And Imports
@@ -60,7 +61,9 @@ However, I postponed imputation until after the train-validation-test split to a
 ## Cells 19-22: Prepare Features And Split
 
 ```text
-I prepared X and y by selecting KeplerDispositionStatus as the target and removing target-related columns from the features.
+I prepared X and y by selecting KeplerDispositionStatus as the target.
+I removed target-related columns, including DispositionScore and ArchiveDispositionStatus.
+I also removed the four explicit false-positive flag columns before modelling.
 Then I split the data into train, validation and test sets using stratification.
 This keeps the class distribution similar in all subsets and prepares the data for train-only feature selection.
 ```
@@ -87,32 +90,34 @@ A false positive means that a false-positive object was predicted as a candidate
 
 ```text
 I trained Logistic Regression with several C values and selected the one with the best validation F1-score.
-The best C was 0.1.
-The model achieved very high validation performance, with F1 around 0.994.
-I also checked the confusion matrix to see the types of errors.
-However, I interpret the result carefully because some false-positive flags may be strongly related to the target.
+The best C was 10.
+The model achieved about 80.3% validation F1-score.
+On the final test set it achieved about 82.1% accuracy and about 0.820 F1-score.
+This is lower than the original flag-based version, but it is more realistic because the model cannot use explicit false-positive flags.
 ```
 
 ## Cells 35-39: SVM
 
 ```text
 I trained and tuned an SVM model using different C values and two kernels: linear and RBF.
-The best model used a linear kernel with C equal to 0.01.
-It achieved a validation F1-score around 0.993, which is very high but slightly lower than Logistic Regression.
-I also used a confusion matrix to inspect the classification errors.
+The best model used an RBF kernel with C equal to 10.
+It achieved about 82.6% validation F1-score.
+On the final test set it achieved about 85.5% accuracy and about 0.855 F1-score.
+This was the best final model.
 ```
 
 ## Cells 40-45: Final Model, Test Evaluation And Limitations
 
 ```text
 After tuning, I retrained both models on the combined training and validation data and evaluated them on the untouched test set.
-Logistic Regression achieved about 90.2% accuracy and F1-score, while SVM achieved about 89.9%.
-I selected Logistic Regression because it was slightly better and easier to explain.
-However, I mention one important limitation: some false-positive flags may act as proxy variables for the target.
+Logistic Regression achieved about 82.1% accuracy and 0.820 F1-score.
+SVM achieved about 85.5% accuracy and 0.855 F1-score.
+I selected SVM because it performed better on the final test set.
+The main limitation is that removing explicit false-positive flags reduces proxy risk, but it does not prove that all indirect proxy information is removed.
 ```
 
 ## Final Sentence
 
 ```text
-The model performs well, but I treat the result carefully because the dataset contains features that may be strongly related to the labelling process itself.
+After removing the explicit false-positive flag columns, the model performs less perfectly but the result is easier to defend because it relies more on measurement-based features.
 ```
