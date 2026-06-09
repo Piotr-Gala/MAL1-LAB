@@ -1,4 +1,4 @@
-# Assignment 4: Detecting Exoplanets - Oral Exam Notes
+﻿# Assignment 4: Detecting Exoplanets - Oral Exam Notes
 
 ## Opening Speech
 
@@ -21,71 +21,71 @@ I also treated the result carefully, because some false-positive flag features m
 
 ## Cells 1-3: Imports
 
-**Co powiedziec**
+**What to say**
 
 ```text
 At the beginning I import the libraries needed for the whole machine learning workflow.
 Pandas and NumPy are used for data handling, Matplotlib and Seaborn for visualization, and Scikit-learn for preprocessing, modelling and evaluation.
 ```
 
-**Po ludzku**
+**Plain English**
 
-To tylko przygotowanie narzedzi. Jeszcze nic sie nie dzieje z danymi.
+This is only tool setup. Nothing has happened to the data yet.
 
-**Najwazniejsze**
+**Most important**
 
-- `pandas` - praca z tabela danych.
-- `numpy` - operacje numeryczne.
-- `matplotlib`, `seaborn` - wykresy.
-- `train_test_split` - podzial danych.
-- `SimpleImputer` - uzupelnianie brakow.
-- `StandardScaler` - skalowanie cech.
-- `LogisticRegression`, `SVC` - modele.
-- metrics - ocena modelu.
+- `pandas` - working with tabular data.
+- `numpy` - numerical operations.
+- `matplotlib`, `seaborn` - plots and visualizations.
+- `train_test_split` - data splitting.
+- `SimpleImputer` - filling missing values.
+- `StandardScaler` - feature scaling.
+- `LogisticRegression`, `SVC` - models.
+- metrics - model evaluation.
 
-**Pytanie**
+**Question**
 
 ```text
 Why do you use pandas?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 I use pandas because the dataset is tabular, so a DataFrame is convenient for loading, inspecting and transforming the data.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why do you use seaborn?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 I use seaborn to create clearer statistical visualizations, for example the correlation heatmap.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why do you import evaluation metrics?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Because after training the models I need to measure their performance using accuracy, precision, recall, F1-score and confusion matrices.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why do you use StandardScaler?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 I use StandardScaler because Logistic Regression and SVM are sensitive to feature scale. Scaling makes features comparable.
@@ -95,55 +95,55 @@ I use StandardScaler because Logistic Regression and SVM are sensitive to featur
 
 ## Cells 4-5: Loading The Dataset
 
-**Co powiedziec**
+**What to say**
 
 ```text
 In this step I load the exoplanet dataset from a CSV file into a pandas DataFrame.
 Then I check the shape of the dataset and display the first few rows to make sure the data was loaded correctly.
 ```
 
-**Konkret z notebooka**
+**Notebook details**
 
 ```text
 9564 rows and 49 columns
 ```
 
-**Po ludzku**
+**Plain English**
 
-`shape` mowi, ile jest wierszy i kolumn.  
-`head()` pokazuje pierwsze rekordy.
+`shape` shows how many rows and columns there are.  
+`head()` shows the first rows.
 
-**Pytanie**
+**Question**
 
 ```text
 Why do you check the shape of the dataset?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 I check the shape to know how many observations and features are available in the dataset.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why do you use head()?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 I use head() to quickly inspect the first rows and verify that the dataset was loaded correctly.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 What does one row represent?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 One row represents one Kepler object of interest, with its measured astronomical properties and disposition labels.
@@ -153,7 +153,7 @@ One row represents one Kepler object of interest, with its measured astronomical
 
 ## Cells 6-8: Initial Overview And Renaming Columns
 
-**Co powiedziec**
+**What to say**
 
 ```text
 After loading the data, I perform an initial overview.
@@ -161,74 +161,74 @@ I use info() to check column types and missing values, and describe() to see bas
 Then I rename the columns to make them easier to understand.
 ```
 
-**Po ludzku**
+**Plain English**
 
-Sprawdzasz, co jest w tabeli: typy danych, braki, podstawowe statystyki.
+This checks what is in the table: data types, missing values and basic statistics.
 
-**Konkret**
+**Concrete details**
 
-- dataset ma 49 kolumn,
-- sa kolumny numeryczne i tekstowe,
-- niektore kolumny maja braki,
-- `koi_teq_err1` i `koi_teq_err2` sa calkowicie puste.
+- the dataset has 49 columns,
+- there are numerical and text columns,
+- some columns have missing values,
+- `koi_teq_err1` and `koi_teq_err2` are completely empty.
 
-**Pytanie**
+**Question**
 
 ```text
 What is the purpose of info()?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 info() shows the data types, number of non-null values and memory usage, so it helps identify missing values and categorical columns.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 What is the purpose of describe()?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 describe() gives summary statistics, such as mean, standard deviation, minimum, maximum and quartiles.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why did you rename the columns?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 I renamed the columns to make them more descriptive and easier to interpret during analysis.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Does renaming columns affect the model?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 No, renaming only changes column labels. It does not change the data values.
 ```
 
-**Uwaga**
+**Note**
 
-W notebooku jest literowka `ImpactParamete`. To tylko blad w nazwie kolumny, nie zmienia danych ani modelu.
+There is a typo in the notebook: `ImpactParamete`. It is only an error in the column name and does not change the data or the model.
 
 ---
 
 ## Cells 9-13: Missing Values And Encoding Target
 
-**Co powiedziec**
+**What to say**
 
 ```text
 I calculated missing value percentages for all columns.
@@ -237,11 +237,11 @@ After that, I encoded the disposition labels numerically.
 The final target based on Kepler data is almost balanced, with false positives and candidates in similar numbers.
 ```
 
-**Po ludzku**
+**Plain English**
 
-Najpierw sprawdzasz braki, potem usuwasz kolumny bez sensu, potem zamieniasz tekstowe etykiety na liczby.
+First I check missing values, then remove irrelevant columns, then convert text labels into numbers.
 
-**Usuniete kolumny**
+**Removed columns**
 
 - `EquilibriumTemperatureUpperUnc, K`
 - `EquilibriumTemperatureLowerUnc, K`
@@ -258,7 +258,7 @@ CANDIDATE -> 1
 CONFIRMED -> 2
 ```
 
-**Konkret targetu**
+**Target details**
 
 ```text
 KeplerDispositionStatus:
@@ -266,63 +266,63 @@ KeplerDispositionStatus:
 1 -> 4717
 ```
 
-To jest prawie zbalansowany binary classification problem.
+This is an almost balanced binary classification problem.
 
-**Pytanie**
+**Question**
 
 ```text
 Why analyze missing values first?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Because missing values affect preprocessing decisions. Some columns may need to be removed, while others can be imputed.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why remove columns with 100% missing values?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Because they contain no information and cannot help the model.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why remove ID columns?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Because identifiers do not describe physical properties and may cause the model to memorize objects instead of learning patterns.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why encode labels?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Because machine learning models need numerical labels instead of text categories.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Is the target balanced?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Yes, the Kepler disposition target is almost balanced: about 4847 false positives and 4717 candidates.
@@ -332,7 +332,7 @@ Yes, the Kepler disposition target is almost balanced: about 4847 false positive
 
 ## Cells 14-18: Outliers And Missing Values Before Split
 
-**Co powiedziec**
+**What to say**
 
 ```text
 I analyzed outliers using the IQR method, but I decided not to remove them because extreme astronomical values may be valid observations.
@@ -350,9 +350,9 @@ lower bound = Q1 - 1.5 * IQR
 upper bound = Q3 + 1.5 * IQR
 ```
 
-**Po ludzku**
+**Plain English**
 
-Outliery zostaja, bo w astronomii ekstremalne wartosci moga byc prawdziwe, a nie bledne.
+The outliers are kept because in astronomy extreme values may be real observations, not errors.
 
 **Dropna check**
 
@@ -362,72 +362,72 @@ Shape after dropna: (7803, 43)
 Rows removed: 1761
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 What is an outlier?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 An outlier is a value that lies far away from the typical range of a feature.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 How does the IQR method work?
 ```
 
-**Odpowiedz**
+**Answer**
 ```text
 It uses the first and third quartiles. Values below Q1 minus 1.5 IQR or above Q3 plus 1.5 IQR are treated as outliers.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why is IQR not ideal for binary flags?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Because binary flags only have values 0 and 1, so the IQR method may mark valid flag values as outliers.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why did you not remove outliers?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Because extreme values in astronomical data may be valid physical observations, not errors. Removing them could remove useful information.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why not use dropna()?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Because it would remove 1761 rows, which is a significant amount of data.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 What is data leakage?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Data leakage happens when information from validation or test data is used during training or preprocessing.
@@ -437,7 +437,7 @@ Data leakage happens when information from validation or test data is used durin
 
 ## Cells 19-28: Features, Split, Train-Only Correlation, Imputation And Scaling
 
-**Co powiedziec**
+**What to say**
 
 ```text
 I prepared X and y by selecting KeplerDispositionStatus as the target and removing target-related columns from the features.
@@ -446,11 +446,11 @@ After the split, I analyzed correlations only on the training features and remov
 Finally, I applied median imputation and standard scaling, fitting both preprocessing steps only on the training data to avoid data leakage.
 ```
 
-**Po ludzku**
+**Plain English**
 
-Najpierw robisz `X` i `y`, potem dzielisz dane, potem patrzysz na korelacje tylko na `X_train`. Dopiero po tym usuwasz wybrane kolumny ze wszystkich splitow i robisz imputacje oraz scaling.
+First I create `X` and `y`, then split the data, then inspect correlations only on `X_train`. Only after that do I remove selected columns from all splits and apply imputation and scaling.
 
-**X i y**
+**X and y**
 
 ```text
 X = features
@@ -463,7 +463,7 @@ y = target
 KeplerDispositionStatus
 ```
 
-**Usuniete z X**
+**Removed from X**
 
 - `DispositionScore`
 - `KeplerDispositionStatus`
@@ -477,22 +477,22 @@ X_val: 1531 rows
 X_test: 1913 rows
 ```
 
-**Po co stratify**
+**Why stratify**
 
-Zachowuje podobny rozklad klas w train, validation i test.
+It preserves a similar class distribution in train, validation and test.
 
 **Correlation analysis**
 
-Korelacja jest liczona tylko na `X_train`, nie na calym datasecie. To jest wazne, bo feature selection nie powinno korzystac z informacji z validation ani test setu.
+Correlation is calculated only on `X_train`, not on the full dataset. This is important because feature selection should not use information from the validation or test set.
 
-**Usuniete przez korelacje**
+**Removed because of correlation**
 
 - `PlanetaryRadiusLowerUnc, Earthradii`
 - `InsolationFluxLowerUnc, Earthflux`
 
-**Teoria korelacji**
+**Correlation theory**
 
-Korelacja Pearsona:
+Pearson correlation:
 
 ```text
 +1 = strong positive linear relation
@@ -502,7 +502,7 @@ Korelacja Pearsona:
 
 **Imputation**
 
-Braki sa uzupelniane mediana. Mediana jest lepsza od sredniej przy outlierach, bo jest odporniejsza na ekstremalne wartosci.
+Missing values are filled with the median. The median is better than the mean with outliers because it is more robust to extreme values.
 
 **Scaling**
 
@@ -510,159 +510,159 @@ Braki sa uzupelniane mediana. Mediana jest lepsza od sredniej przy outlierach, b
 x_scaled = (x - mean) / standard_deviation
 ```
 
-Scaling jest potrzebny, bo Logistic Regression i SVM sa wrazliwe na skale cech.
+Scaling is needed because Logistic Regression and SVM are sensitive to feature scales.
 
-**Pytanie**
+**Question**
 
 ```text
 What are X and y?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 X is the feature matrix and y is the target variable.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why remove ArchiveDispositionStatus?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Because it is another disposition label and could leak information about the target.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why remove DispositionScore?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 It is likely too directly related to the disposition label and could leak target information.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why use train, validation and test sets?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 The training set is used to fit the model, the validation set to tune hyperparameters, and the test set for final unbiased evaluation.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why use stratified split?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 To keep the class proportions similar in all subsets.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 What is correlation?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Correlation measures the strength and direction of a linear relationship between two variables.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why did you use absolute correlation?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Because both strong positive and strong negative correlations can indicate redundant information.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why remove highly correlated features?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 To reduce redundancy and multicollinearity, especially for Logistic Regression.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 What is multicollinearity?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Multicollinearity occurs when two or more features are strongly correlated and carry similar information.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Was this step leakage-safe?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Yes. Correlation-based feature selection is fitted on the training set only and the same selected columns are removed from validation and test sets.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why use median imputation?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Median imputation is robust to outliers and allows us to keep rows with missing values.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why fit imputer only on training data?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 To avoid using information from validation or test data during preprocessing.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 What does StandardScaler do?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 It subtracts the mean and divides by the standard deviation for each feature.
@@ -672,7 +672,7 @@ It subtracts the mean and divides by the standard deviation for each feature.
 
 ## Metrics: FP, FN, Precision, Recall, F1
 
-**Klasy**
+**Classes**
 
 ```text
 0 = FALSE POSITIVE
@@ -708,7 +708,7 @@ Actual: FALSE POSITIVE
 Predicted: CANDIDATE
 ```
 
-Falsy alarm.
+False alarm.
 
 **FN**
 
@@ -717,7 +717,7 @@ Actual: CANDIDATE
 Predicted: FALSE POSITIVE
 ```
 
-Model przegapil potencjalna planete.
+The model missed a potential planet.
 
 **Accuracy**
 
@@ -733,7 +733,7 @@ Overall correctness.
 precision = TP / (TP + FP)
 ```
 
-Jak model mowi "candidate", to jak czesto ma racje?
+When the model says "candidate", how often is it correct?
 
 **Recall**
 
@@ -741,7 +741,7 @@ Jak model mowi "candidate", to jak czesto ma racje?
 recall = TP / (TP + FN)
 ```
 
-Ile prawdziwych candidates model znalazl?
+How many true candidates did the model find?
 
 **F1**
 
@@ -749,9 +749,9 @@ Ile prawdziwych candidates model znalazl?
 F1 = 2 * precision * recall / (precision + recall)
 ```
 
-Balans precision i recall.
+Balance between precision and recall.
 
-**Do powiedzenia**
+**What to say**
 
 ```text
 In this task, precision tells me how reliable the predicted planet candidates are.
@@ -760,7 +760,7 @@ F1-score balances these two aspects.
 A false positive means that a false-positive object was predicted as a candidate, while a false negative means that a real candidate was missed.
 ```
 
-**Intuicja**
+**Intuition**
 
 ```text
 Precision asks: when the model says "candidate", can I trust it?
@@ -769,7 +769,7 @@ Accuracy asks: how often is the model correct overall?
 F1 asks: is there a good balance between precision and recall?
 ```
 
-**Mini przyklad**
+**Mini example**
 
 ```text
 TP = 90
@@ -783,7 +783,7 @@ recall = 90 / (90 + 20) = 0.818
 F1 is about 0.857
 ```
 
-**Najwazniejsze**
+**Most important**
 
 ```text
 Precision cares about FP.
@@ -795,7 +795,7 @@ F1 balances both.
 
 ## Cells 29-34: Logistic Regression
 
-**Co powiedziec**
+**What to say**
 
 ```text
 I trained Logistic Regression with several C values and selected the one with the best validation F1-score.
@@ -805,9 +805,9 @@ I also checked the confusion matrix to see the types of errors.
 However, I interpret the result carefully because some false-positive flags may be strongly related to the target.
 ```
 
-**Po ludzku**
+**Plain English**
 
-Regresja logistyczna to model klasyfikacyjny, mimo nazwy "regression".
+Logistic Regression is a classification model despite the word "regression" in its name.
 
 **C**
 
@@ -816,106 +816,106 @@ small C = stronger regularization
 large C = weaker regularization
 ```
 
-**Wynik**
+**Result**
 
 ```text
 Best Logistic Regression C: 0.1
 Validation F1: about 0.994
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why is Logistic Regression used for classification?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Because it estimates class probabilities and then assigns observations to classes based on a decision boundary.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 What does C control?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 C controls regularization strength. Smaller C means stronger regularization.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why tune C?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Because different regularization strengths can affect generalization performance.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why use F1-score?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 F1-score balances precision and recall, so it is useful when we care about both false positives and false negatives.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 What is a confusion matrix?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 A confusion matrix shows how many samples were classified correctly and incorrectly for each class.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 What is overfitting?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Overfitting happens when a model learns the training data too closely and performs poorly on unseen data.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why should the high validation score be interpreted carefully?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Because some false-positive flags may act as proxy information for the target label.
 ```
 
-**Wazna uwaga**
+**Important note**
 
-False-positive flags moga byc proxy targetu, czyli model moze miec bardzo mocna podpowiedz.
+False-positive flags may act as proxies for the target, so the model may receive a very strong hint.
 
 ---
 
 ## Cells 35-39: SVM
 
-**Co powiedziec**
+**What to say**
 
 ```text
 I trained and tuned an SVM model using different C values and two kernels: linear and RBF.
@@ -924,16 +924,16 @@ It achieved a validation F1-score around 0.993, which is very high but slightly 
 I also used a confusion matrix to inspect the classification errors.
 ```
 
-**Po ludzku**
+**Plain English**
 
-SVM szuka granicy decyzyjnej, ktora oddziela klasy z jak najwiekszym marginesem.
+SVM looks for a decision boundary that separates classes with the largest possible margin.
 
 **Kernel**
 
-- `linear` - liniowa granica decyzyjna.
-- `rbf` - nieliniowa, bardziej elastyczna granica.
+- `linear` - a linear decision boundary.
+- `rbf` - a nonlinear, more flexible boundary.
 
-**Wynik**
+**Result**
 
 ```text
 Best SVM C: 0.01
@@ -941,73 +941,73 @@ Best SVM kernel: linear
 Validation F1: about 0.993
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 What is SVM?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 SVM is a classification algorithm that tries to find a decision boundary with the maximum margin between classes.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 What is a margin?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 The margin is the distance between the decision boundary and the closest training points.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 What are support vectors?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Support vectors are the closest points to the decision boundary, and they determine the position of that boundary.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 What is the difference between linear and RBF kernel?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 A linear kernel creates a linear decision boundary, while an RBF kernel can model nonlinear relationships.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why did the linear kernel perform best?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 It suggests that the classes may be separated well using a relatively linear boundary in the scaled feature space.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 What does C do in SVM?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 C controls the trade-off between a wider margin and fewer training errors. Smaller C means stronger regularization.
@@ -1017,7 +1017,7 @@ C controls the trade-off between a wider margin and fewer training errors. Small
 
 ## Cells 40-45: Final Model, Test Evaluation, Limitations
 
-**Co powiedziec**
+**What to say**
 
 ```text
 After tuning, I retrained both models on the combined training and validation data and evaluated them on the untouched test set.
@@ -1026,11 +1026,11 @@ I selected Logistic Regression because it was slightly better and easier to expl
 However, I mention one important limitation: some false-positive flags may act as proxy variables for the target.
 ```
 
-**Po ludzku**
+**Plain English**
 
-Po wyborze hiperparametrow trenujesz finalnie na `train + validation`, a test zostaje tylko do koncowej oceny.
+After choosing hyperparameters, the final model is trained on `train + validation`, while the test set is kept only for the final evaluation.
 
-**Finalne wyniki**
+**Final results**
 
 ```text
 Logistic Regression:
@@ -1042,69 +1042,69 @@ Accuracy: 0.899
 F1-score: 0.898
 ```
 
-**Wybrany model**
+**Selected model**
 
 ```text
 Logistic Regression
 ```
 
-Bo jest minimalnie lepszy na tescie i prostszy do wyjasnienia.
+Because it is slightly better on the test set and easier to explain.
 
-**Pytanie**
+**Question**
 
 ```text
 Why retrain on train plus validation?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Because after hyperparameters are selected, using more training data can improve the final model.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why is the test set used only at the end?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Because it should represent unseen data and provide an unbiased estimate of final performance.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Which model was selected and why?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 I selected Logistic Regression because it achieved slightly better test performance and is simpler to interpret.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Why did validation performance differ from test performance?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 The validation result was probably optimistic. The test set gives a more realistic estimate of generalization.
 ```
 
-**Pytanie**
+**Question**
 
 ```text
 Is 90% accuracy good?
 ```
 
-**Odpowiedz**
+**Answer**
 
 ```text
 Yes, it is a strong result, but it should be interpreted carefully because of possible proxy features and dataset-specific limitations.
@@ -1116,7 +1116,7 @@ Yes, it is a strong result, but it should be interpreted carefully because of po
 Some false-positive flags may act as proxy information for the target.
 ```
 
-**Finalna obrona**
+**Final defense**
 
 ```text
 The model performs well, but I treat the result carefully because the dataset contains features that may be strongly related to the labelling process itself.
